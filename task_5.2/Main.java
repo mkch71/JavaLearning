@@ -14,8 +14,10 @@
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Map;
 
 /*
 Модернизация ПО
@@ -24,7 +26,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        //тупой вариант
         List<String> listFamily = new ArrayList<>();
         List<String> listCity = new ArrayList<>();
 
@@ -44,20 +46,45 @@ public class Main {
 
         /*// Read the house number
         int houseNumber = scanner.nextInt();
-
         if (0 <= houseNumber && houseNumber < list.size()) {
             String familyName = list.get(houseNumber);
             System.out.println(familyName);
         }*/
         // Read the city
         String cityCheck = scanner.nextLine();
+
         int i = listCity.indexOf(cityCheck);
-        if (i>0) {
+        if (i<0) {
+            System.out.println("В списке нет семьи которая живет в городе: "+cityCheck);
+
+        }
+        else {
             String familyName = listFamily.get(i);
             System.out.println(familyName);
         }
+        //Map
+        Map <String, String> list = new HashMap<String,String>();
+        while (true) {
+            String city = scanner.nextLine();
+            if (city.isEmpty()) {
+                break;
+            }
+            String family = scanner.nextLine();
+            if (family.isEmpty()) {
+                break;
+            }
+
+            list.put(city,family);
+
+        }
+        // Read the city
+        cityCheck = scanner.nextLine();
+
+        if (list.keySet().contains(cityCheck)){
+            System.out.println(list.get(cityCheck));
+        }
         else {
-            System.out.println("В списке нет семьи которая живет в городе: "+cityCheck);
+            System.out.println("В городе "+ cityCheck+" никто не живет!");
         }
     }
 }
