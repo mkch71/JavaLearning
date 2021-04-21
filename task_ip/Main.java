@@ -12,12 +12,13 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Введите путь к файлу ip|port");
         String filePath = buff.readLine();
         buff.close();
         buff = new BufferedReader(new FileReader(filePath));
 
         String str;
-       
+
         while ((str=buff.readLine())!=null){
             System.out.println("ip: "+str.replace("\t"," port: "));
         }
