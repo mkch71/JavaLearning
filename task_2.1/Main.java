@@ -15,6 +15,16 @@ public class Main {
         String[] arrWord = {"Мама", "Мыла", "Раму"};
 
         possibleString(arrWord, 0);
+        System.out.println("-------------------");
+        //циклом
+        for (int i=0;i< arrWord.length; i++){
+            for( int j=0; j< arrWord.length;j++){
+                if (j!=i){
+                    System.out.println(arrWord[i]+arrWord[j]+arrWord[3-i-j]);
+                }
+
+            }
+        }
     }
     public static void possibleString(String[] x, int index) {
         if (index == x.length) {
