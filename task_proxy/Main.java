@@ -9,7 +9,7 @@ public class Main {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("D:\\JavaLearning\\proxy.txt"));
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("D:\\JavaLearning\\good_proxy.txt"));
-           
+
             String readLine = "";
             while ((readLine = bufferedReader.readLine()) != null) {
                 String ip = readLine.split("\t")[0].trim();
@@ -39,16 +39,18 @@ public class Main {
     public static boolean checkProxy(String ip, int port){
         Proxy proxyHost = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(ip, port));
         try {
-            URLConnection connection = new URL("https://vozhzhaev.ru/test.php").openConnection(proxyHost);
+            URLConnection connection = new URL("http://mkch71.beget.tech/php/ip/").openConnection(proxyHost);
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
-            StringBuffer response = new StringBuffer();
+            String result = "";
 
             while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+                result=inputLine;
             }
+            //System.out.println("Ответ "+ result);
+            
             in.close();
-         
+
             return true;
 
         }catch (Exception e){
